@@ -35,6 +35,8 @@ export default function SocketHandler(
 	res: NextApiResponseServerIO
 ) {
 	if (!res.socket.server.io) {
+		console.log('Initialising socket')
+
 		// adapt Next's net Server to http Server
 		const httpServer: NetServer = res.socket.server
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,6 +50,8 @@ export default function SocketHandler(
 			})
 		})
 
+		console.log('Socket initialised')
+		console.log({ io })
 		// append SocketIO server to Next.js socket server response
 		res.socket.server.io = io
 	}
