@@ -13,7 +13,9 @@ const Home: NextPage = () => {
 		useState<Socket<ServerToClientEvents, ClientToServerEvents>>()
 
 	useEffect(() => {
+		console.log(`Making socket request to ${env.NEXT_PUBLIC_SOCKET_PATH}`)
 		fetch(env.NEXT_PUBLIC_SOCKET_PATH).then(() => {
+			console.log('Initialising socket')
 			const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io({
 				path: env.NEXT_PUBLIC_SOCKET_PATH,
 			})
